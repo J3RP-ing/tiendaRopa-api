@@ -13,11 +13,11 @@ return new class extends Migration
             $table->unsignedBigInteger('id_carrito');
             $table->unsignedBigInteger('id_producto');
             $table->unsignedBigInteger('id_personalizacion')->nullable();
-            $table->integer('cantidad');
-            $table->decimal('subtotal', 10, 2);
+            $table->integer('cantidad')->default(1);
+            $table->decimal('subtotal', 10, 2)->default(0);
             $table->softDeletes();
 
-            $table->foreign('id_carrito')->references('id_carrito')->on('tblCarrito')->onDelete('restrict');
+            $table->foreign('id_carrito')->references('id_carrito')->on('tblCarrito')->onDelete('cascade');
 
             $table->foreign('id_producto')->references('id_producto')->on('tblProductos')->onDelete('restrict');
 

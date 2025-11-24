@@ -12,10 +12,10 @@ return new class extends Migration
             $table->id('id_personalizacion');
             $table->unsignedBigInteger('id_producto');
             $table->unsignedBigInteger('id_usuario');
-            $table->string('tipo_perzonalizacion', 100);
-            $table->string('talla', 50);
-            $table->float('precio_total_personalizacion');
-            $table->text('diseño')->nullable();
+            $table->string('tipo_personalizacion', 100);
+            $table->string('talla', 50)->nullable();
+            $table->decimal('precio_extra', 10, 2)->default(0);
+            $table->text('diseno')->nullable();
             $table->softDeletes();
 
             $table->foreign('id_producto')->references('id_producto')->on('tblProductos')->onDelete('restrict');
