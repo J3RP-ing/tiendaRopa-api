@@ -13,7 +13,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id_usuario')->unique();
             $table->timestamp('fecha_creacion')->useCurrent();
             $table->boolean('estado')->default(1);
-            $table->float('total_carrito');
             $table->softDeletes();
 
             $table->foreign('id_usuario')->references('id_usuario')->on('tblUsuarios')->onDelete('restrict');

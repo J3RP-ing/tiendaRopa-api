@@ -10,15 +10,15 @@ return new class extends Migration
     {
         Schema::create('tblPagos', function (Blueprint $table) {
             $table->id('id_pago');
-            $table->unsignedBigInteger('id_pedido');
+            $table->unsignedBigInteger('id_pedido')->unique()->nullable();
             $table->timestamp('fecha_pago')->useCurrent();
-            $table->string('metodo', 50);
+            $table->string('metodo', 100);
             $table->decimal('monto', 10, 2);
-            $table->enum('estado',['pendiente', 'procesando', 'aprobado', 'rechazado', 'fallido', 'reembolsado', 'cancelado'])->default('pendiente');
-            $table->string('referencia_transaccion', 255)->nullable()->unique();
+            $table->string('estado', 50)->default('completado');
+            $table->string('referencia_transaccion', 255)->nullable();
             $table->softDeletes();
 
-            $table->foreign('id_pedido')->references('id_pedido')->on('tblPedidos')->onDelete('restrict');
+            $table->foreign('id_pedido')->references('id_pedido')->on('tblPedidos')->onDelete('set null');
         });
     }
 

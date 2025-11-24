@@ -10,8 +10,8 @@ return new class extends Migration
     {
         Schema::create('tblCategorias', function (Blueprint $table) {
             $table->id('id_categoria');
-            $table->string('nombre_categoria', 100)->unique();
-            $table->text('descripción')->nullable();
+            $table->string('nombre_categoria', 100);
+            $table->text('descripcion')->nullable();
             $table->softDeletes();
         });
     }
@@ -21,4 +21,3 @@ return new class extends Migration
         Schema::dropIfExists('tblCategorias');
     }
 };
-
