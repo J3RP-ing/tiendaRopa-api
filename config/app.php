@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\ServiceProvider; 
+use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\Facades\Request;
+
 return [
 
     /*
@@ -122,5 +126,46 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Autoloaded Service Providers
+    |--------------------------------------------------------------------------
+    |
+    | The service providers listed here will be automatically loaded on the
+    | request to your application. Feel free to add your own services to
+    | this array to grant expanded functionality to your applications.
+    |
+    */
+
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        /*
+         * Package Service Providers...
+         */
+
+        /*
+         * Application Service Providers...
+         */
+        App\Providers\AppServiceProvider::class,
+        // App\Providers\AuthServiceProvider::class,    
+        App\Providers\RouteServiceProvider::class, // ¡ESTA ES LA LÍNEA CLAVE!
+
+    ])->toArray(),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Class Aliases
+    |--------------------------------------------------------------------------
+    |
+    | This array of class aliases will be registered when this application
+    | is started. However, feel free to add any aliases that you wish to
+    | have available throughout your application as long as they don't
+    | conflict with existing PHP classes and your preferred programming style.
+    |
+    */
+
+    'aliases' => Facade::defaultAliases()->merge([
+        // 'Example' => App\Facades\Example::class,
+    ])->toArray(),
 
 ];

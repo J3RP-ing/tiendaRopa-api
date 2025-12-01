@@ -9,6 +9,7 @@ return [
     'allowed_origins' => [
         'http://localhost:5173',  // Vite
         'http://localhost:3000',  // React normal
+        'https://didactic-cod-r4677pjg9rr4fwpp4-5173.app.github.dev/'
     ],
 
     'allowed_origins_patterns' => [],

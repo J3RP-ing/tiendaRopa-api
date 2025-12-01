@@ -2,15 +2,24 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+// Asegúrate de que esta línea esté, si usas Sanctum
+use Laravel\Sanctum\HasApiTokens; 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    // Agrega HasApiTokens si estás usando Laravel Sanctum para tu API
+    use HasApiTokens, HasFactory, Notifiable; 
+
+    /**
+     * The table associated with the model.
+     * ¡ESTA ES LA LÍNEA QUE RESUELVE EL ERROR 500 DE LA TABLA!
+     *
+     * @var string
+     */
+    protected $table = 'tbl_usuarios'; 
 
     /**
      * The attributes that are mass assignable.
