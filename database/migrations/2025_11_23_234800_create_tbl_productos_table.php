@@ -11,14 +11,14 @@ return new class extends Migration
         Schema::create('tblProductos', function (Blueprint $table) {
             $table->id('id_producto');
             $table->unsignedBigInteger('id_categoria');
-            $table->string('nombre_producto', 100)->unique();
-            $table->text('descripción')->nullable();
-            $table->float('precio');
+            $table->string('nombre_producto', 150);
+            $table->text('descripcion')->nullable();
+            $table->decimal('precio', 10, 2);
             $table->integer('stock')->default(0);
-            $table->string('talla', 1)->nullable();
+            $table->string('talla', 50)->nullable();
             $table->string('color', 50)->nullable();
-            $table->string('imagen_url', 255)->nullable();//crear tabla de imagenes en ser necesario
-            $table->boolean('estado')->default(1);
+            $table->string('imagen_url', 255)->nullable();
+            $table->string('estado', 20)->default('activo');
             $table->softDeletes();
 
             $table->foreign('id_categoria')->references('id_categoria')->on('tblCategorias')->onDelete('restrict');

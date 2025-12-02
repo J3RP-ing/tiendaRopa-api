@@ -25,19 +25,16 @@ class DetalleCarrito extends Model
         'subtotal',
     ];
 
-    // Relación con carrito
     public function carrito()
     {
         return $this->belongsTo(Carrito::class, 'id_carrito', 'id_carrito');
     }
 
-    // Relación con producto
     public function producto()
     {
         return $this->belongsTo(Producto::class, 'id_producto', 'id_producto');
     }
 
-    // Relación con personalización
     public function personalizacion()
     {
         return $this->belongsTo(Personalizacion::class, 'id_personalizacion', 'id_personalizacion');

@@ -13,12 +13,12 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pedido');
             $table->unsignedBigInteger('id_producto');
             $table->unsignedBigInteger('id_personalizacion')->nullable();
-            $table->integer('cantidad');
+            $table->integer('cantidad')->default(1);
             $table->decimal('precio_unitario', 10, 2);
             $table->decimal('subtotal', 10, 2);
             $table->softDeletes();
 
-            $table->foreign('id_pedido')->references('id_pedido')->on('tblPedidos')->onDelete('restrict');
+            $table->foreign('id_pedido')->references('id_pedido')->on('tblPedidos')->onDelete('cascade');
 
             $table->foreign('id_producto')->references('id_producto')->on('tblProductos')->onDelete('restrict');
 

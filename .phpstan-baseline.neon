@@ -1,0 +1,10 @@
+parameters:
+    ignoreErrors:
+        - '#Undefined function define#'
+        - '#Undefined function defined#'
+        - '#Undefined function function_exists#'
+        - '#Undefined function microtime#'
+        - '#Undefined function file_exists#'
+        - '#Undefined function require#'
+        - '#Undefined function require_once#'
+

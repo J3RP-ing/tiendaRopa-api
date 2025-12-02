@@ -16,11 +16,7 @@ class RequestCarrito extends FormRequest
         $isUpdate = in_array($this->method(), ['PUT', 'PATCH']);
 
         return [
-
-            // Solo se valida en creación
-            'id_usuario' =>
-                ($isUpdate ? 'sometimes' : 'required') . '|exists:tblUsuarios,id_usuario',
-
+            'id_usuario' =>($isUpdate ? 'sometimes' : 'required') . '|exists:tblUsuarios,id_usuario',
             'estado' => 'boolean',
             'total_carrito' => ($isUpdate ? 'sometimes' : 'required') . '|numeric|min:0',
         ];

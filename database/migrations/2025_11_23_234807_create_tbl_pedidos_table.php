@@ -11,15 +11,12 @@ return new class extends Migration
         Schema::create('tblPedidos', function (Blueprint $table) {
             $table->id('id_pedido');
             $table->unsignedBigInteger('id_usuario');
-            $table->unsignedBigInteger('id_pago')->nullable();
             $table->timestamp('fecha_pedido')->useCurrent();
-            $table->decimal('total', 10, 2);
-            $table->string('estado', 50);//en caso de poner las variables de estado poner *enum* y sus variables y el default
+            $table->decimal('total', 10, 2)->default(0);
+            $table->string('estado', 50)->default('pendiente');
             $table->string('direccion_envio', 255);
-            $table->string('metodo_pago', 100);
+            $table->string('metodo_pago', 100)->nullable();
             $table->softDeletes();
-
-            
 
             $table->foreign('id_usuario')->references('id_usuario')->on('tblUsuarios')->onDelete('restrict');
         });
