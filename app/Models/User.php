@@ -3,15 +3,14 @@
 namespace App\Models;
 
 // Asegúrate de que esta línea esté, si usas Sanctum
-use Laravel\Sanctum\HasApiTokens; 
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    // Agrega HasApiTokens si estás usando Laravel Sanctum para tu API
-    use HasApiTokens, HasFactory, Notifiable; 
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The table associated with the model.
@@ -19,7 +18,7 @@ class User extends Authenticatable
      *
      * @var string
      */
-    protected $table = 'tbl_usuarios'; 
+    protected $table = 'tbl_usuarios';
 
     /**
      * The attributes that are mass assignable.
